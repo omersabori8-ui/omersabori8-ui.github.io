@@ -200,3 +200,69 @@ background:rgba(255,255,255,0.4);
 
 
 
+
+
+
+
+
+
+    id=00007}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ویدیو آنلاین</title>
+
+<style>
+body{
+  margin:0;
+  background:#000;
+  font-family:sans-serif;
+}
+
+/* گرید ویدیو */
+.video-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:12px;
+  padding:12px;
+}
+
+@media(min-width:900px){
+  .video-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.video-card{
+  border-radius:15px;
+  overflow:hidden;
+  background:#111;
+  box-shadow:0 8px 25px rgba(0,0,0,0.5);
+}
+
+.video-card video{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="video-grid">
+
+  <!-- ویدیو 1 -->
+  <div class="video-card">
+    <video controls playsinline onclick="this.requestFullscreen()">
+      <source src="Lesson1.mp4" type="video/mp4">
+      مرورگر شما از ویدیو پشتیبانی نمی‌کند
+    </video>
+  </div>
+
+</div>
+
+</bod
