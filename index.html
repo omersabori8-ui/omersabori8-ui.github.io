@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>VIP Color Live</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+height:100%;
+overflow:hidden;
+font-family:tahoma;
+color:white;
+}
+
+/* 🌈 پس زمینه چند رنگ متحرک */
+body{
+background:linear-gradient(270deg,
+#ff0000,
+#ff7300,
+#ff00aa,
+#6a00ff,
+#00c3ff,
+#00ff88);
+background-size:1200% 1200%;
+animation:rainbowMove 15s ease infinite;
+display:flex;
+flex-direction:column;
+}
+
+@keyframes rainbowMove{
+0%{background-position:0% 50%;}
+25%{background-position:50% 100%;}
+50%{background-position:100% 50%;}
+75%{background-position:50% 0%;}
+100%{background-position:0% 50%;}
+}
+
+/* ✨ نور متحرک روی صفحه */
+body::before{
+content:'';
+position:absolute;
+width:200%;
+height:200%;
+background:radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+animation:lightMove 8s linear infinite;
+}
+
+@keyframes lightMove{
+0%{transform:translate(-50%,-50%) rotate(0deg);}
+100%{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+/* ===== HEADER ===== */
+header{
+text-align:center;
+padding:15px;
+font-size:18px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(6px);
+z-index:2;
+}
+
+/* ===== SLIDER ===== */
+.slider{
+flex:2;
+position:relative;
+overflow:hidden;
+z-index:2;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+animation:fadeSlide 12s infinite;
+border-radius:15px;
+}
+
+.slide:nth-child(1){background-image:url('https://picsum.photos/600/800?701');}
+.slide:nth-child(2){background-image:url('https://picsum.photos/600/800?702'); animation-delay:4s;}
+.slide:nth-child(3){background-image:url('https://picsum.photos/600/800?703'); animation-delay:8s;}
+
+@keyframes fadeSlide{
+0%{opacity:0;}
+10%{opacity:1;}
+30%{opacity:1;}
+40%{opacity:0;}
+100%{opacity:0;}
+}
+
+/* ===== MOVIES ===== */
+.movies{
+flex:2;
+display:flex;
+justify-content:space-around;
+align-items:center;
+padding:10px;
+z-index:2;
+}
+
+.card{
+width:30%;
+border-radius:15px;
+overflow:hidden;
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(6px);
+transition:0.4s;
+text-align:center;
+}
+
+.card img{
+width:100%;
+height:120px;
+object-fit:cover;
+}
+
+.card h3{
+font-size:12px;
+padding:5px;
+}
+
+/* ⭐ رنک رنگی متحرک */
+.rank{
+margin:6px;
+padding:4px;
+font-size:11px;
+border-radius:10px;
+background:linear-gradient(90deg,#ffffff,#ffff00,#ffffff);
+color:#ff0000;
+animation:rankShine 2s infinite linear;
+}
+
+@keyframes rankShine{
+0%{box-shadow:0 0 5px #fff;}
+50%{box-shadow:0 0 20px #ffff00;}
+100%{box-shadow:0 0 5px #fff;}
+}
+
+/* Hover */
+.card:hover{
+transform:scale(1.1);
+background:rgba(255,255,255,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+🔥 leve 🔥
+</header>
+
+
+
+<div class="movies">
+
+<div class="card">
+<img src="https://picsum.photos/300/300?801">
+<h3>Color Power</h3>
+<div class="rank">★ 9.8</div>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/300/300?802">
+<h3>Rainbow War</h3>
+<div class="rank">★ 9.3</div>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/300/300?803">
+<h3>Light Empire</h3>
+<div class="rank">★ 9.6</div>
+</div>
+
+</div>
+   
+</body>
+</html>
+
+</body>
+</html>
