@@ -197,8 +197,45 @@ background:rgba(255,255,255,0.4);
 
 
 
+
+
+
+
+    <!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Player</title>
+
+<style>
+body{
+  margin:0;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+
+.video-box{
+  width:100%;
+  max-width:1100px;
+  padding:10px;
+}
+
+video{
+  width:100%;
+  height:auto;
+  border-radius:20px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.7);
+  background:black;
+}
+</style>
+</head>
+
 <body>
-<!-- Video Player Professional -->
+
 <div class="video-box">
   <video controls playsinline preload="metadata">
     <source src="lesson1.mp4" type="video/mp4">
@@ -206,26 +243,5 @@ background:rgba(255,255,255,0.4);
   </video>
 </div>
 
-<style>
-.video-box {
-  width: 100%;
-  max-width: 900px;
-  margin: 20px auto;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-
-.video-box video {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 20px;
-}
-</style>
-    
 </body>
-
-
-    
-
+</html
