@@ -198,9 +198,31 @@ background:rgba(255,255,255,0.4);
 
 
 <body>
-<video controls width="170" height="190">
-  <source src="video.mp4" type="video/mp4">
-</video>
+<!-- Video Player Professional -->
+<div class="video-box">
+  <video controls playsinline preload="metadata">
+    <source src="lesson1.mp4" type="video/mp4">
+    مرورگر شما از ویدیو پشتیبانی نمی‌کند
+  </video>
+</div>
+
+<style>
+.video-box {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.video-box video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+}
+</style>
     
 </body>
 
