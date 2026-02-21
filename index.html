@@ -215,5 +215,194 @@ style="width:100%; max-width:800px; border-radius:12px;">
     
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ===== TOP SETTINGS BUTTON ===== -->
+<div id="topSettings">
+  <button onclick="openSettings()">⚙️ تنظیمات</button>
+  <button onclick="openAbout()">ℹ️ معلومات</button>
+</div>
+
+<!-- ===== SETTINGS PANEL ===== -->
+<div id="settingsPanel" class="panel">
+  <div class="panel-box">
+    <h2>تنظیمات سایت</h2>
+
+    <!-- Dark Mode -->
+    <div class="setting-item">
+      <span>حالت تاریک</span>
+      <input type="checkbox" id="darkMode" onchange="toggleDark()">
+    </div>
+
+    <!-- Sound Control -->
+    <div class="setting-item">
+      <span>صدا ویدیو</span>
+      <input type="checkbox" id="soundMode" onchange="toggleSound()">
+    </div>
+
+    <!-- Video Size -->
+    <div class="setting-item">
+      <span>ویدیو بزرگ</span>
+      <input type="checkbox" id="videoSize" onchange="toggleVideoSize()">
+    </div>
+
+    <!-- Background Color -->
+    <button onclick="changeBackground()">🎨 تغییر رنگ سایت</button>
+
+    <br><br>
+    <button onclick="closeSettings()">بستن</button>
+  </div>
+</div>
+
+<!-- ===== ABOUT PANEL ===== -->
+<div id="aboutPanel" class="panel">
+  <div class="panel-box">
+    <h2>معلومات درباره سایت</h2>
+    <p>نام سایت: Sabori Video</p>
+    <p>نسخه: 1.0</p>
+    <p>این ویب سایت برای نمایش ویدیو آنلاین در موبایل و کمپیوتر ساخته شده.</p>
+    <p>پشتیبانی: HTML + GitHub Pages</p>
+    <button onclick="closeAbout()">بستن</button>
+  </div>
+</div>
+
+<style>
+#topSettings{
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+}
+#topSettings button{
+  padding: 8px 14px;
+  margin: 4px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  background: white;
+}
+
+.panel{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 10000;
+}
+.panel-box{
+  background: white;
+  padding: 20px;
+  width: 85%;
+  max-width: 320px;
+  margin: 90px auto;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.setting-item{
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+/* Dark Mode */
+.dark{
+  background: #111 !important;
+  color: white !important;
+}
+
+/* Large Video */
+.big-video video{
+  width: 100% !important;
+  height: auto !important;
+}
+</style>
+
+<script>
+// Open & Close Panels
+function openSettings(){
+  document.getElementById("settingsPanel").style.display="block";
+}
+function closeSettings(){
+  document.getElementById("settingsPanel").style.display="none";
+}
+function openAbout(){
+  document.getElementById("aboutPanel").style.display="block";
+}
+function closeAbout(){
+  document.getElementById("aboutPanel").style.display="none";
+}
+
+// Dark Mode (with save)
+function toggleDark(){
+  document.body.classList.toggle("dark");
+  localStorage.setItem("darkMode", document.body.classList.contains("dark"));
+}
+
+// Sound Control
+function toggleSound(){
+  const videos = document.querySelectorAll("video");
+  const soundOn = document.getElementById("soundMode").checked;
+  videos.forEach(v=>{
+    v.muted = !soundOn;
+  });
+  localStorage.setItem("soundMode", soundOn);
+}
+
+// Video Size
+function toggleVideoSize(){
+  document.body.classList.toggle("big-video");
+  localStorage.setItem("videoSize", document.body.classList.contains("big-video"));
+}
+
+// Background Color Change
+function changeBackground(){
+  const colors = ["#ff008c","#ff4da6","#6a11cb","#00c6ff","#222"];
+  const random = colors[Math.floor(Math.random()*colors.length)];
+  document.body.style.background = random;
+  localStorage.setItem("bgColor", random);
+}
+
+// Load Saved Settings
+window.onload = function(){
+  if(localStorage.getItem("darkMode") === "true"){
+    document.body.classList.add("dark");
+    document.getElementById("darkMode").checked = true;
+  }
+
+  if(localStorage.getItem("soundMode") === "true"){
+    document.getElementById("soundMode").checked = true;
+    toggleSound();
+  }
+
+  if(localStorage.getItem("videoSize") === "true"){
+    document.body.classList.add("big-video");
+    document.getElementById("videoSize").checked = true;
+  }
+
+  const savedBg = localStorage.getItem("bgColor");
+  if(savedBg){
+    document.body.style.background = savedBg;
+  }
+}
+</script>
+
   
 
