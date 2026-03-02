@@ -6,21 +6,20 @@
 <title>Saboori Secure Auth</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
 
-/* بخش تغییر یافته برای انیمیشن پس‌زمینه */
+/* انیمیشن پس‌زمینه */
 body {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* تعریف رنگ‌های گرادینت */
     background: linear-gradient(-45deg, #361599, #4203ff, #ff7b00, #804000);
-    background-size: 400% 400%; /* بزرگ کردن پس‌زمینه برای حرکت */
-    animation: gradientMove 10s ease infinite; /* اجرای انیمیشن */
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    padding: 20px; /* برای فاصله در موبایل */
 }
 
-/* تعریف نحوه حرکت رنگ‌ها */
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -28,26 +27,62 @@ body {
 }
 
 .container{
-    width:750px;
-    height:420px;
-    display:flex;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 0 50px rgba(0,0,0,0.8); /* سایه تیره‌تر برای تضاد با پس‌زمینه */
-    z-index: 1;
+    width: 100%;
+    max-width: 800px; /* حداکثر عرض در کامپیوتر */
+    min-height: 450px;
+    display: flex;
+    flex-direction: row; /* حالت افقی در کامپیوتر */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    background: rgba(15, 15, 15, 0.95);
 }
 
 .left{
-    width:50%;
-    background: rgba(15, 15, 15, 0.95); /* کمی شفاف برای زیبایی بیشتر */
-    padding:40px;
-    color:white;
+    width: 50%;
+    padding: 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right{
+    width: 50%;
+    background: linear-gradient(135deg, #ff7b00, #ffcc00);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+}
+
+/* تنظیمات مخصوص موبایل */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column-reverse; /* بخش رنگی بالا و فرم پایین */
+        max-width: 400px;
+        height: auto;
+    }
+    .left, .right {
+        width: 100%;
+    }
+    .right {
+        padding: 40px 20px;
+        font-size: 24px;
+    }
+    .left {
+        padding: 30px 20px;
+    }
 }
 
 .input-box{margin-bottom:20px;}
 .input-box input{
     width:100%;
-    padding:10px;
+    padding:12px;
     background:transparent;
     border:none;
     border-bottom:2px solid #555;
@@ -60,11 +95,12 @@ button{
     padding:12px;
     margin-top:15px;
     border:none;
-    border-radius:20px;
+    border-radius:25px;
     background:linear-gradient(to right, #ff7b00, #ffcc00);
     font-weight:bold;
     cursor:pointer;
     transition: 0.3s;
+    color: #000;
 }
 
 button:hover{
@@ -72,24 +108,11 @@ button:hover{
     box-shadow: 0 5px 15px rgba(255, 123, 0, 0.4);
 }
 
-.switch{margin-top:15px;font-size:14px;}
+.switch{margin-top:15px;font-size:14px; text-align: center;}
 .switch span{color:orange;cursor:pointer; text-decoration: underline;}
 
-.right{
-    width:50%;
-    background: linear-gradient(135deg, #ff7b00, #ffcc00);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    font-size:30px;
-    font-weight:bold;
-    text-align:center;
-    padding: 20px;
-}
-
 .hidden{display:none;}
-.message{margin-top:10px;font-size:14px;}
+.message{margin-top:10px;font-size:14px; text-align: center;}
 .error{color:#ff4d4d; font-weight: bold;}
 .success{color:lightgreen;}
 </style>
@@ -100,7 +123,7 @@ button:hover{
 <div class="container">
     <div class="left">
         <div id="loginForm">
-            <h2 style="margin-bottom: 20px;">Login - Saboori</h2>
+            <h2 style="margin-bottom: 20px;">Login</h2>
             <div class="input-box">
                 <input type="email" id="loginEmail" placeholder="Email">
             </div>
@@ -115,7 +138,7 @@ button:hover{
         </div>
 
         <div id="registerForm" class="hidden">
-            <h2 style="margin-bottom: 20px;">Register - Saboori</h2>
+            <h2 style="margin-bottom: 20px;">Register</h2>
             <div class="input-box">
                 <input type="email" id="regEmail" placeholder="Email">
             </div>
@@ -131,15 +154,13 @@ button:hover{
     </div>
 
     <div class="right">
-        Secure Login 
+        Saboori<br>Secure Auth
     </div>
 </div>
 
 <script>
 let storedEmail="";
 let storedPass="";
-
-const blockedDomains = ["tempmail.com", "10minutemail.com", "mailinator.com"];
 
 function showRegister(){
     document.getElementById("loginForm").classList.add("hidden");
@@ -165,11 +186,17 @@ function register(){
         msg.innerText="Invalid Email Format!";
         return;
     }
+    if(pass.length < 4){
+        msg.className="message error";
+        msg.innerText="Password too short!";
+        return;
+    }
 
     storedEmail=email;
     storedPass=pass;
     msg.className="message success";
     msg.innerText="Account Created! Now Login.";
+    setTimeout(showLogin, 1500);
 }
 
 function login(){
@@ -189,9 +216,6 @@ function login(){
 
 </body>
 </html>
-
-
-
 
 
 
