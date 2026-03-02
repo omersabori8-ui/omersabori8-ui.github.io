@@ -1,240 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saboori Secure Auth</title>
+
+    <style>
+        /* تنظیمات کلی صفحه */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* انیمیشن پس‌زمینه متحرک */
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* تعریف رنگ‌های گرادینت متحرک */
+            background: linear-gradient(-45deg, #000000, #1a1a1a, #ff7b00, #804000);
+            background-size: 400% 400%;
+            animation: moveGradient 12s ease infinite;
+            overflow: hidden;
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* استایل کانتینر اصلی */
+        .container {
+            width: 90%;
+            max-width: 750px;
+            height: 420px;
+            display: flex;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            background: #0f0f0f;
+        }
+
+        /* بخش سمت چپ - فرم‌ها */
+        .left {
+            width: 50%;
+            padding: 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border: none;
+            border-bottom: 2px solid #444;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus {
+            border-bottom-color: #ff7b00;
+            background: rgba(255,255,255,0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(to right, #ff7b00, #ffcc00);
+            color: #000;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 123, 0, 0.4);
+        }
+
+        .switch {
+            margin-top: 20px;
+            font-size: 13px;
+            text-align: center;
+            color: #bbb;
+        }
+
+        .switch span {
+            color: #ff7b00;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .switch span:hover {
+            text-decoration: underline;
+        }
+
+        /* بخش سمت راست - بنر */
+        .right {
+            width: 50%;
+            background: linear-gradient(135deg, #ff7b00, #ffcc00);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+            font-size: 28px;
+            font-weight: 800;
+            text-align: center;
+            padding: 30px;
+            line-height: 1.2;
+        }
+
+        .hidden { display: none; }
+        
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+            min-height: 20px;
+        }
+        
+        .error { color: #ff4d4d; }
+        .success { color: #2ecc71; }
+
+        /* ریسپانسیو برای موبایل */
+        @media (max-width: 600px) {
+            .container { flex-direction: column; height: auto; }
+            .left, .right { width: 100%; }
+            .right { padding: 40px; font-size: 20px; }
+        }
+    </style>
 </head>
 <body>
-  
 
+    <div class="container">
+        <div class="left">
+            <div id="loginForm">
+                <h2>Login - Saboori</h2>
+                <div class="input-box">
+                    <input type="email" id="loginEmail" placeholder="Email">
+                </div>
+                <div class="input-box">
+                    <input type="password" id="loginPass" placeholder="Password">
+                </div>
+                <button onclick="login()">Start Session</button>
+                <div class="switch">
+                    Don't have an account? <span onclick="showRegister()">Register</span>
+                </div>
+                <div id="loginMessage" class="message"></div>
+            </div>
 
+            <div id="registerForm" class="hidden">
+                <h2>Register - Saboori</h2>
+                <div class="input-box">
+                    <input type="email" id="regEmail" placeholder="Email">
+                </div>
+                <div class="input-box">
+                    <input type="password" id="regPass" placeholder="Password">
+                </div>
+                <button onclick="register()">Create Account</button>
+                <div class="switch">
+                    Already have an account? <span onclick="showLogin()">Login</span>
+                </div>
+                <div id="registerMessage" class="message"></div>
+            </div>
+        </div>
 
+        <div class="right">
+            SECURE<br>LOGIN<br>@Saboori
+        </div>
+    </div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabori</title>
+    <script>
+        let storedEmail = "";
+        let storedPass = "";
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Arial, sans-serif;
-}
+        function showRegister() {
+            document.getElementById("loginForm").classList.add("hidden");
+            document.getElementById("registerForm").classList.remove("hidden");
+        }
 
-html{
-  scroll-behavior:smooth;
-}
+        function showLogin() {
+            document.getElementById("registerForm").classList.add("hidden");
+            document.getElementById("loginForm").classList.remove("hidden");
+        }
 
-body{
-  overflow-x:hidden;
-  background: linear-gradient(-45deg, #ff4ecd, #6a5cff, #00c9ff, #ff9a9e);
-  background-size: 400% 400%;
-  animation: gradientMove 10s ease infinite;
-}
+        function register() {
+            const email = document.getElementById("regEmail").value.trim();
+            const pass = document.getElementById("regPass").value.trim();
+            const msg = document.getElementById("registerMessage");
 
-@keyframes gradientMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
+            if (!email.includes("@") || pass.length < 6) {
+                msg.className = "message error";
+                msg.innerText = "Check Email or Password (min 6 chars)!";
+                return;
+            }
 
-/* HEADER */
-header{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:20px 40px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-  z-index:999;
-}
+            storedEmail = email;
+            storedPass = pass;
+            msg.className = "message success";
+            msg.innerText = "Registered! Now go to Login.";
+        }
 
-.logo{
-  font-size:28px;
-  font-weight:bold;
-  color:white;
-}
+        function login() {
+            const email = document.getElementById("loginEmail").value.trim();
+            const pass = document.getElementById("loginPass").value.trim();
+            const msg = document.getElementById("loginMessage");
 
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:25px;
-  font-size:18px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-nav a:hover{
-  color:#00ffff;
-}
-
-/* HERO FULL SCREEN VIDEO */
-.hero{
-  position:relative;
-  width:100%;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-}
-
-.hero video{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-2;
-}
-
-.overlay{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.5);
-  z-index:-1;
-}
-
-.content h1{
-  font-size:70px;
-}
-
-.content p{
-  margin-top:15px;
-  font-size:20px;
-}
-
-/* VIDEO SECTION */
-.video-section{
-  padding:140px 20px 80px;
-  text-align:center;
-  color:white;
-  min-height:100vh;
-}
-
-.video-section h2{
-  font-size:40px;
-  margin-bottom:40px;
-}
-
-/* فقط این بخش حرفه‌ای شد (منظم شدن ویدیوها) */
-.video-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap:30px;
-  justify-items:center;
-}
-
-.video-grid video{
-  width:100%;
-  max-width:600px;
-  border-radius:15px;
-  box-shadow:0 0 25px rgba(0,0,0,0.5);
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .content h1{
-    font-size:35px;
-  }
-  .hero{
-    height:60vh;
-  }
-  .video-grid{
-    grid-template-columns: 1fr;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">Sabori</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#videos">Video</a>
-  </nav>
-</header>
-
-<!-- HOME -->
-<section class="hero" id="home">
-
-  <video autoplay muted loop>
-    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
-  </video>
-
-  <div class="overlay"></div>
-
-  <div class="content">
-    <h1>SABORI</h1>
-    <p>VIP Video Website</p>
-  </div>
-
-</section>
-
-<!-- VIDEO SECTION -->
-<section class="video-section" id="videos">
-  <h2>My Videos</h2>
-
-  <div class="video-grid">
-
-
-
-
-
-
-
-
-
-
-<!-- Failed to upload "زمان حال ساده.mp4" -->
-
-
-
-
-
-
-
-
-  </div>
-</section>
-
+            if (email === storedEmail && pass === storedPass && email !== "") {
+                msg.className = "message success";
+                msg.innerText = "Success! Access Granted.";
+            } else {
+                msg.className = "message error";
+                msg.innerText = "Invalid Credentials!";
+            }
+        }
+    </script>
 </body>
 </html>
-
-
-
-
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
- 
 
 
 
