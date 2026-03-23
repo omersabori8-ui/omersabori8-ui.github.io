@@ -2,7 +2,7 @@
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
-<title>سابوری</title>
+<title>سابوری / Sabori</title>
 <style>
   body {
     display: flex;
@@ -21,40 +21,45 @@
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
   }
+  .clickable {
+    cursor: pointer;
+  }
   .title {
     font-size: 50px;
     font-weight: bold;
     margin-bottom: 40px;
     color: #ffffff;
+    text-align: center;
   }
   .footer {
     margin-top: 40px;
     font-size: 22px;
     color: #ffffff;
     text-align: center;
-    cursor: pointer;
-  }
-  .qrcode-wrapper {
-    cursor: pointer;
   }
 </style>
 </head>
 <body>
 
-<div class="title">سابوری</div>
+<!-- نام بالای صفحه: فارسی و انگلیسی -->
+<div class="title clickable" onclick="window.open('https://wa.me/93731983000', '_blank')">
+  سابوری / Sabori
+</div>
 
-<div class="qrcode-wrapper" onclick="window.open('https://wa.me/93731983000', '_blank')">
+<!-- QR Code -->
+<div class="clickable" onclick="window.open('https://wa.me/93731983000', '_blank')">
   <canvas id="qrcode"></canvas>
 </div>
 
-<div class="footer" onclick="window.open('https://wa.me/93731983000', '_blank')">
+<!-- متن پایین -->
+<div class="footer clickable" onclick="window.open('https://wa.me/93731983000', '_blank')">
   دریافت پول از پی پال<br>
   Receive money from PayPal
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script>
-  const link = "https://wa.me/93731983000"; // لینک واتساپ شماره درست
+  const link = "https://wa.me/93731983000";
   const canvas = document.getElementById('qrcode');
 
   QRCode.toCanvas(canvas, link, {
