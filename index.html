@@ -1,140 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Search Page</title>
-
+<title>sabori</title>
 <style>
-
-body{
-margin:0;
-padding:0;
-min-height:100vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-font-family:Arial;
-background:linear-gradient(270deg,#0c2899,#020a0d,#1c22d2);
-background-size:400% 400%;
-animation:bgmove 10s ease infinite;
-}
-
-@keyframes bgmove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-.box{
-text-align:center;
-width:85%;
-max-width:320px;
-margin-top:20px;
-}
-
-.search{
-width:100%;
-padding:12px;
-font-size:16px;
-border-radius:30px;
-border:none;
-outline:none;
-box-shadow:0 0 10px rgba(0,0,0,0.3);
-}
-
-.number{
-margin-top:15px;
-font-size:16px;
-color:white;
-font-weight:bold;
-}
-
-/* products */
-
-.products{
-display:flex;
-flex-direction:column;
-align-items:center;
-width:100%;
-max-width:400px;
-}
-
-.product{
-width:90%;
-margin-top:20px;
-text-align:center;
-}
-
-.product img{
-width:100%;
-max-width:350px;
-border-radius:10px;
-}
-
-.whatsapp{
-margin-top:10px;
-display:inline-block;
-padding:10px 20px;
-background:#25D366;
-color:white;
-text-decoration:none;
-font-size:15px;
-border-radius:25px;
-}
-
-.whatsapp:hover{
-background:#1ebe5d;
-}
-
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(270deg, #0044cc, #ffd700);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+  }
+  @keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+  .title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #0044cc;
+    animation: colorAnim 5s infinite alternate;
+  }
+  @keyframes colorAnim {
+    0% {color: #0044cc;}
+    50% {color: #ffd700;}
+    100% {color: #0044cc;}
+  }
+  .footer {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #0044cc;
+    text-align: center;
+    animation: colorAnim 5s infinite alternate;
+  }
 </style>
 </head>
-
 <body>
 
-<div class="box">
+<div class="title">sabori</div>
 
-<input class="search" type="text" placeholder="Search...">
+<canvas id="qrcode"></canvas>
 
-<div class="number">
-+93 70 844 8744
+<div class="footer">
+  داخل شدن به ویپ سایت<br>
+  دریافت پول از پی پال
 </div>
 
-</div>
+<!-- QR Code JS -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script>
+  const link = "https://wa.me/93731983000"; // لینک واتساپ
+  const canvas = document.getElementById('qrcode');
 
-<div class="products">
-
-<!-- product 1 -->
-
-<div class="product">
-
-<img src="https://i.imgur.com/Vn6XG6H.jpg">
-
-<br>
-
-<a class="whatsapp"
-href="https://wa.me/93708448744?text=سلام%20این%20محصول%20را%20میخواهم%20👇%0Aکرم%20لیفتینگ%20لدورا%0Ahttps://i.imgur.com/Vn6XG6H.jpg">
-سفارش در WhatsApp
-</a>
-
-</div>
-
-<!-- product 2 -->
-
-<div class="product">
-
-<img src="https://i.imgur.com/l2mXG3K.jpg">
-
-<br>
-
-<a class="whatsapp"
-href="https://wa.me/93708448744?text=سلام%20این%20محصول%20را%20میخواهم%20👇%0Aماسک%20اسکراب%20لدورا%0Ahttps://i.imgur.com/l2mXG3K.jpg">
-سفارش در WhatsApp
-</a>
-
-</div>
-
-</div>
+  QRCode.toCanvas(canvas, link, {
+    width: 250,
+    color: {
+      dark: '#0044cc', // رنگ QR
+      light: '#ffffff'
+    }
+  }, function (error) {
+    if (error) console.error(error);
+    console.log('QR Code آماده شد!');
+  });
+</script>
 
 </body>
 </html>
