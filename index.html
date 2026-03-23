@@ -10,11 +10,11 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(270deg, #0044cc, #00aaff, #0044cc);
     background-size: 400% 400%;
     animation: gradientBG 10s ease infinite;
-    margin: 0;
   }
   @keyframes gradientBG {
     0% {background-position: 0% 50%;}
@@ -22,15 +22,15 @@
     100% {background-position: 0% 50%;}
   }
   .title {
-    font-size: 50px; /* بزرگ و واضح */
+    font-size: 50px;
     font-weight: bold;
     margin-bottom: 40px;
-    color: #ffffff; /* رنگ ثابت سفید */
+    color: #ffffff; /* ثابت */
   }
   .footer {
     margin-top: 40px;
-    font-size: 24px; /* بزرگتر */
-    color: #ffffff; /* رنگ ثابت سفید */
+    font-size: 22px;
+    color: #ffffff; /* ثابت */
     text-align: center;
   }
 </style>
@@ -39,14 +39,15 @@
 
 <div class="title">sabori</div>
 
-<canvas id="qrcode"></canvas>
+<a href="https://wa.me/93731983000" target="_blank">
+  <canvas id="qrcode"></canvas>
+</a>
 
 <div class="footer">
-  داخل شدن به ویپ سایت<br>
-  دریافت پول از پی پال
+  دریافت پول از پی پال<br>
+  Receive money from PayPal
 </div>
 
-<!-- QR Code JS -->
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script>
   const link = "https://wa.me/93731983000"; // لینک واتساپ
@@ -55,7 +56,7 @@
   QRCode.toCanvas(canvas, link, {
     width: 300,
     color: {
-      dark: '#0044cc', // رنگ QR
+      dark: '#0044cc',
       light: '#ffffff'
     }
   }, function (error) {
