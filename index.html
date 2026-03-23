@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa">
 <head>
@@ -11,9 +12,10 @@
     justify-content: center;
     height: 100vh;
     font-family: Arial, sans-serif;
-    background: linear-gradient(270deg, #0044cc, #ffd700);
+    background: linear-gradient(270deg, #0044cc, #00aaff, #0044cc);
     background-size: 400% 400%;
     animation: gradientBG 10s ease infinite;
+    margin: 0;
   }
   @keyframes gradientBG {
     0% {background-position: 0% 50%;}
@@ -21,23 +23,16 @@
     100% {background-position: 0% 50%;}
   }
   .title {
-    font-size: 36px;
+    font-size: 50px; /* بزرگ و واضح */
     font-weight: bold;
-    margin-bottom: 30px;
-    color: #0044cc;
-    animation: colorAnim 5s infinite alternate;
-  }
-  @keyframes colorAnim {
-    0% {color: #0044cc;}
-    50% {color: #ffd700;}
-    100% {color: #0044cc;}
+    margin-bottom: 40px;
+    color: #ffffff; /* رنگ ثابت سفید */
   }
   .footer {
-    margin-top: 30px;
-    font-size: 18px;
-    color: #0044cc;
+    margin-top: 40px;
+    font-size: 24px; /* بزرگتر */
+    color: #ffffff; /* رنگ ثابت سفید */
     text-align: center;
-    animation: colorAnim 5s infinite alternate;
   }
 </style>
 </head>
@@ -59,7 +54,7 @@
   const canvas = document.getElementById('qrcode');
 
   QRCode.toCanvas(canvas, link, {
-    width: 250,
+    width: 300,
     color: {
       dark: '#0044cc', // رنگ QR
       light: '#ffffff'
