@@ -21,9 +21,6 @@
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
   }
-  .clickable {
-    cursor: pointer;
-  }
   .title {
     font-size: 50px;
     font-weight: bold;
@@ -37,40 +34,53 @@
     color: #ffffff;
     text-align: center;
   }
+  .whatsapp-button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #25D366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .whatsapp-button:hover {
+    background-color: #1ebe5d;
+  }
 </style>
 </head>
 <body>
 
-<!-- نام بالای صفحه: فارسی و انگلیسی -->
-<div class="title clickable" onclick="window.open('https://wa.me/93731983000', '_blank')">
-  سابوری / Sabori
-</div>
+<div class="title">سابوری / Sabori</div>
 
-<!-- QR Code -->
-<div class="clickable" onclick="window.open('https://wa.me/93731983000', '_blank')">
-  <canvas id="qrcode"></canvas>
-</div>
+<!-- QR Code فقط برای اسکن، لمس مستقیم کاری نکند -->
+<canvas id="qrcode"></canvas>
 
-<!-- متن پایین -->
-<div class="footer clickable" onclick="window.open('https://wa.me/93731983000', '_blank')">
+<!-- متن پایین فقط نمایش -->
+<div class="footer">
   دریافت پول از پی پال<br>
   Receive money from PayPal
 </div>
 
+<!-- دکمه واتساپ جداگانه -->
+<button class="whatsapp-button" onclick="window.open('https://wa.me/93731983000', '_blank')">
+  ارسال پیام در واتساپ
+</button>
+
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script>
-  const link = "https://wa.me/93731983000";
+  const link = "https://wa.me/93731983000"; // لینک واتساپ برای دکمه
   const canvas = document.getElementById('qrcode');
 
   QRCode.toCanvas(canvas, link, {
     width: 300,
     color: {
-      dark: '#0044cc',
+      dark: '#0044cc', // رنگ QR
       light: '#ffffff'
     }
   }, function (error) {
     if (error) console.error(error);
-    console.log('QR Code آماده شد!');
+    console.log('QR Code آماده شد! فقط برای اسکن');
   });
 </script>
 
