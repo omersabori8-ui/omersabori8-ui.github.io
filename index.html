@@ -2,7 +2,7 @@
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
-<title> saboi / Sabori</title>
+<title>sabori / Sabori</title>
 <style>
   body {
     display: flex;
@@ -16,11 +16,13 @@
     background-size: 400% 400%;
     animation: gradientBG 10s ease infinite;
   }
+
   @keyframes gradientBG {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
+
   .title {
     font-size: 50px;
     font-weight: bold;
@@ -28,66 +30,92 @@
     color: #ffffff;
     text-align: center;
   }
+
   .footer {
     margin-top: 40px;
     font-size: 22px;
     color: #ffffff;
     text-align: center;
   }
-  .whatsapp-button {
-    margin-top: 30px;
+
+  .whatsapp-button,
+  .tiktok-button {
+    margin-top: 20px;
     padding: 15px 30px;
     font-size: 20px;
-    background-color: #25D366;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .whatsapp-button {
+    background-color: #25D366;
   }
   .whatsapp-button:hover {
     background-color: #1ebe5d;
   }
+
+  .tiktok-button {
+    background-color: #000000;
+  }
+  .tiktok-button:hover {
+    background-color: #333333;
+  }
+
   .qrcode-wrapper {
     cursor: default; /* لمس هیچ کاری نکند */
+    margin-top: 30px;
+  }
+
+  .tiktok-logo {
+    width: 24px;
+    height: 24px;
   }
 </style>
 </head>
 <body>
 
-<div class="title"> sabori / Sabori</div>
+  <div class="title">sabori / Sabori</div>
 
-<!-- QR Code فقط برای اسکن -->
-<div class="qrcode-wrapper">
-  <canvas id="qrcode"></canvas>
-</div>
+  <!-- QR Code فقط برای اسکن -->
+  <div class="qrcode-wrapper">
+    <canvas id="qrcode"></canvas>
+  </div>
 
-<!-- متن پایین فقط نمایش -->
-<div class="footer">
-  دریافت پول از پی پال<br>
-  Receive money from PayPal
-</div>
+  <!-- دکمه تیک تاک -->
+  <button class="tiktok-button" onclick="window.open('https://www.tiktok.com/@hajiomarsabori', '_blank')">
+    <img class="tiktok-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg" alt="TikTok">
+    دنبال کردن در TikTok
+  </button>
 
-<!-- دکمه واتساپ جداگانه -->
-<button class="whatsapp-button" onclick="window.open('https://wa.me/93731983000', '_blank')">
-  ارسال پیام در واتساپ
-</button>
+  <!-- دکمه واتساپ جداگانه -->
+  <button class="whatsapp-button" onclick="window.open('https://wa.me/93731983000', '_blank')">
+    ارسال پیام در واتساپ
+  </button>
 
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-<script>
-  const link = "https://omersabori8-ui.github.io/sabori/"; // لینک QR Code فقط اسکن شود
-  const canvas = document.getElementById('qrcode');
+  <!-- متن پایین فقط نمایش -->
+  <div class="footer">
+    دریافت پول از پی پال<br>
+    Receive money from PayPal
+  </div>
 
-  QRCode.toCanvas(canvas, link, {
-    width: 300,
-    color: {
-      dark: '#0044cc',
-      light: '#ffffff'
-    }
-  }, function (error) {
-    if (error) console.error(error);
-    console.log('QR Code آماده شد! فقط برای اسکن، لمس هیچ کاری نمی‌کند.');
-  });
-</script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script>
+    const link = "https://omersabori8-ui.github.io/sabori/"; // لینک QR Code فقط اسکن شود
+    const canvas = document.getElementById('qrcode');
+
+    QRCode.toCanvas(canvas, link, {
+      width: 300,
+      color: { dark: '#0044cc', light: '#ffffff' }
+    }, function (error) {
+      if (error) console.error(error);
+      console.log('QR Code آماده شد! فقط برای اسکن، لمس هیچ کاری نمی‌کند.');
+    });
+  </script>
 
 </body>
 </html>
