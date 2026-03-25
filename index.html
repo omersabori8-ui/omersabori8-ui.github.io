@@ -5,10 +5,11 @@
      crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>sabori / Sabori</title>
+
 <style>
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;                   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,10 +62,18 @@
   .tiktok-button { background-color: #000000; }
   .tiktok-button:hover { background-color: #333333; }
 
-  .qrcode-wrapper { cursor: default; margin-top: 30px; }
+  .qrcode-wrapper { margin-top: 30px; }
+
+  .qrcode-wrapper img {
+    width: 300px;
+    height: 300px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
   .tiktok-logo { width: 24px; height: 24px; }
 
-  /* دکمه‌ها در کنج بالا */
   .top-buttons {
     position: absolute;
     top: 20px;
@@ -87,25 +96,22 @@
     background-color: #000000;
     color: #ffffff;
   }
-  .info-button:hover { background-color: #222222; }
 
   .welcome-button {
     background-color: #ffcc00;
     color: #000000;
   }
-  .welcome-button:hover { background-color: #ffd633; }
 
-  /* جعبه نمایش اطلاعات popup-like */
   .popup-text {
     position: absolute;
-    top: 60px; /* درست زیر دکمه‌ها */
+    top: 60px;
     right: 20px;
     background-color: rgba(0,0,0,0.85);
     color: #ffffff;
     padding: 15px 20px;
     border-radius: 8px;
     max-width: 300px;
-    display: none; /* مخفی به صورت پیش فرض */
+    display: none;
     z-index: 20;
     line-height: 1.5;
   }
@@ -114,69 +120,80 @@
     background-color: rgba(255,204,0,0.95);
     color: #000000;
   }
-
 </style>
 </head>
+
 <body>
 
-  <div class="top-buttons">
-    <button class="info-button" onclick="togglePopup('info')">معلومات</button>
-    <button class="welcome-button" onclick="togglePopup('welcome')">خوش آمد گوی</button>
-  </div>
+<div class="top-buttons">
+  <button class="info-button" onclick="togglePopup('info')">معلومات</button>
+  <button class="welcome-button" onclick="togglePopup('welcome')">خوش آمد گوی</button>
+</div>
 
-  <div class="title">sabori / Sabori</div>
+<div class="title">sabori / Sabori</div>
 
-  <div class="qrcode-wrapper">
-    <canvas id="qrcode"></canvas>
-  </div>
+<div class="qrcode-wrapper">
+  <img id="qrcode" />
+</div>
 
-  <button class="tiktok-button" onclick="window.open('https://www.tiktok.com/@hajiomarsabori', '_blank')">
-    <img class="tiktok-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg" alt="TikTok">
-    دنبال کردن در TikTok
-  </button>
+<button class="tiktok-button" onclick="window.open('https://www.tiktok.com/@hajiomarsabori', '_blank')">
+  <img class="tiktok-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg">
+  دنبال کردن در TikTok
+</button>
 
-  <button class="whatsapp-button" onclick="window.open('https://wa.me/93731983000', '_blank')">
-    ارسال پیام در واتساپ
-  </button>
+<button class="whatsapp-button" onclick="window.open('https://wa.me/93731983000', '_blank')">
+  ارسال پیام در واتساپ
+</button>
 
-  <div id="info-popup" class="popup-text">
-    این ویپ سایت برای کسانی است که پول در پی پال دارند و نمی‌توانند کشیده، ما اینجا هستیم تا کمک کنیم پول‌هایشان را نقد کنند .
-  </div>
+<div id="info-popup" class="popup-text">
+  این ویپ سایت برای کسانی است که پول در پی پال دارند و نمی‌توانند کشیده، ما اینجا هستیم تا کمک کنیم پول‌هایشان را نقد کنند .
+</div>
 
-  <div id="welcome-popup" class="popup-text welcome">
-    سلام! امیدوارم با این ویپ سایت مشکل شما حل شده باشد و همیشه با ما باشید.
-  </div>
+<div id="welcome-popup" class="popup-text welcome">
+  سلام! امیدوارم با این ویپ سایت مشکل شما حل شده باشد و همیشه با ما باشید.
+</div>
 
-  <div class="footer">
-    دریافت پول از پی پال<br>
-    Receive money from PayPal
-  </div>
+<div class="footer">
+  دریافت پول از پی پال<br>
+  Receive money from PayPal
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-  <script>
-    const canvas = document.getElementById('qrcode');
-    const link = "https://omersabori8-ui.github.io";
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
-    QRCode.toCanvas(canvas, link, {
-      width: 300,
-      color: { dark: '#0044cc', light: '#ffffff' }
-    }, function (error) {
-      if (error) console.error(error);
-    });
+<script>
+  const qrImage = document.getElementById('qrcode');
 
-    function togglePopup(type) {
-      const infoPopup = document.getElementById('info-popup');
-      const welcomePopup = document.getElementById('welcome-popup');
+  // ✅ لینک جدید تو
+  const link = "https://omersabori8-ui.github.io/";
 
-      if(type === 'info') {
-        infoPopup.style.display = infoPopup.style.display === 'none' ? 'block' : 'none';
-        welcomePopup.style.display = 'none';
-      } else if(type === 'welcome') {
-        welcomePopup.style.display = welcomePopup.style.display === 'none' ? 'block' : 'none';
-        infoPopup.style.display = 'none';
-      }
+  QRCode.toDataURL(link, {
+    width: 300,
+    margin: 2,
+    color: {
+      dark: "#0044cc",
+      light: "#ffffff"
     }
-  </script>
+  }, function (err, url) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    qrImage.src = url;
+  });
+
+  function togglePopup(type) {
+    const infoPopup = document.getElementById('info-popup');
+    const welcomePopup = document.getElementById('welcome-popup');
+
+    if(type === 'info') {
+      infoPopup.style.display = infoPopup.style.display === 'none' ? 'block' : 'none';
+      welcomePopup.style.display = 'none';
+    } else if(type === 'welcome') {
+      welcomePopup.style.display = welcomePopup.style.display === 'none' ? 'block' : 'none';
+      infoPopup.style.display = 'none';
+    }
+  }
+</script>
 
 </body>
 </html>
