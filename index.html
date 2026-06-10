@@ -1,221 +1,51 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6204592582582015"
-     crossorigin="anonymous"></script>
-<meta charset="UTF-8">
-<title> 🇦🇫  / Sabori</title>
-
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;                   
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: linear-gradient(270deg, #0044cc, #00aaff, #0044cc);
-    background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite;
-    position: relative;
-  }
-
-  @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  .title {
-    font-size: 50px;
-    font-weight: bold;
-    margin-bottom: 40px;
-    color: #ffffff;
-    text-align: center;
-  }
-
-  .footer {
-    margin-top: 40px;
-    font-size: 22px;
-    color: #ffffff;
-    text-align: center;
-  }
-
-  .whatsapp-button,
-  .tiktok-button {
-    margin-top: 20px;
-    padding: 15px 30px;
-    font-size: 20px;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .whatsapp-button { background-color: #25D366; }
-  .whatsapp-button:hover { background-color: #1ebe5d; }
-
-  .tiktok-button { background-color: #000000; }
-  .tiktok-button:hover { background-color: #333333; }
-
-  .qrcode-wrapper { margin-top: 30px; }
-
-  .qrcode-wrapper img {
-    width: 300px;
-    height: 300px;
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-  }
-
-  .tiktok-logo { width: 24px; height: 24px; }
-
-  .top-buttons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 10;
-  }
-
-  .info-button, .welcome-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-  }
-
-  .info-button {
-    background-color: #000000;
-    color: #ffffff;
-  }
-
-  .welcome-button {
-    background-color: #ffcc00;
-    color: #000000;
-  }
-
-  .popup-text {
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color: rgba(0,0,0,0.85);
-    color: #ffffff;
-    padding: 15px 20px;
-    border-radius: 8px;
-    max-width: 300px;
-    display: none;
-    z-index: 20;
-    line-height: 1.5;
-  }
-
-  .popup-text.welcome {
-    background-color: rgba(255,204,0,0.95);
-    color: #000000;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Omar | Web Developer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: #f4f4f9; color: #333; line-height: 1.6; }
+        header { background: #2c3e50; color: #fff; padding: 2rem; text-align: center; }
+        .container { max-width: 800px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; display: inline-block; margin-bottom: 15px; }
+        .project-card { border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; }
+        .btn { display: inline-block; background: #3498db; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+    </style>
 </head>
-
 <body>
 
-<div class="top-buttons">
-  <button class="info-button" onclick="togglePopup('info')">معلومات</button>
-  <button class="welcome-button" onclick="togglePopup('welcome')">خوش آمد گوی</button>
+<header>
+    <h1>Mohammad Omar</h1>
+    <p>Frontend Developer & Software Engineer</p>
+</header>
+
+<div class="container">
+    <section>
+        <h2>درباره من</h2>
+        <p>توسعه‌دهنده وب با اشتیاق به خلق تجربه‌های کاربری مدرن. متخصص در Frontend و دارای گواهینامه بین‌المللی از ACTID.</p>
+    </section>
+
+    <section>
+        <h2>پروژه‌های فریلنسری</h2>
+        <div class="project-card">
+            <h3>طراحی وب‌سایت شرکتی</h3>
+            <p>پیاده‌سازی رابط کاربری واکنش‌گرا (Responsive) برای مشتری بین‌المللی با استفاده از تکنولوژی‌های روز.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>مهارت‌ها</h2>
+        <ul>
+            <li>HTML5 / CSS3 / JavaScript</li>
+            <li>Web Design & Software Development</li>
+            <li>Git & GitHub Version Control</li>
+        </ul>
+    </section>
+
+    <a href="https://github.com/YOUR_GITHUB_USERNAME" class="btn">مشاهده در گیت‌هاب</a>
 </div>
-
-<div class="title"> 🇦🇫 / Sabori</div>
-
-<div class="qrcode-wrapper">
-  <img id="qrcode" />
-</div>
-
-<button class="tiktok-button" onclick="window.open('https://www.tiktok.com/@hajiomarsabori', '_blank')">
-  <img class="tiktok-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg">
-  دنبال کردن در TikTok
-</button>
-
-<button class="whatsapp-button" onclick="window.open('https://wa.me/93731983000', '_blank')">
-  ارسال پیام در واتساپ
-</button>
-
-<div id="info-popup" class="popup-text">
-
-     
-  
-     این ویپ سایت برای کسانی است که پول در پی پال دارند و نمی‌توانند کشیده، ما اینجا هستیم تا کمک کنیم پول‌هایشان را نقد کنند .
-
-
-     
-     This website is for people who have money in PayPal but cannot withdraw it. We are here to help them cash out their funds.
-
-
-
-     
-</div>
-     
-
-<div id="welcome-popup" class="popup-text welcome">
-
-     
-  سلام! امیدوارم با این ویپ سایت مشکل شما حل شده باشد و همیشه با ما باشید.
-
-
-     
-     Hello! We hope this website has solved your problem and that you will always stay with us.
-
-
-     
-
-</div>
-
-<div class="footer">
-  دریافت پول از پی پال<br>
-  Receive money from PayPal
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-
-<script>
-  const qrImage = document.getElementById('qrcode');
-
-  // ✅ لینک جدید تو
-  const link = "https://omersabori8-ui.github.io/";
-
-  QRCode.toDataURL(link, {
-    width: 300,
-    margin: 2,
-    color: {
-      dark: "#0044cc",
-      light: "#ffffff"
-    }
-  }, function (err, url) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    qrImage.src = url;
-  });
-
-  function togglePopup(type) {
-    const infoPopup = document.getElementById('info-popup');
-    const welcomePopup = document.getElementById('welcome-popup');
-
-    if(type === 'info') {
-      infoPopup.style.display = infoPopup.style.display === 'none' ? 'block' : 'none';
-      welcomePopup.style.display = 'none';
-    } else if(type === 'welcome') {
-      welcomePopup.style.display = welcomePopup.style.display === 'none' ? 'block' : 'none';
-      infoPopup.style.display = 'none';
-    }
-  }
-</script>
 
 </body>
 </html>
