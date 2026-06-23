@@ -1,50 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammad Omar | Web Developer</title>
+    <title>پروژه زیک‌بی - استاد ملک فیصل</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: #f4f4f9; color: #333; line-height: 1.6; }
-        header { background: #2c3e50; color: #fff; padding: 2rem; text-align: center; }
-        .container { max-width: 800px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; display: inline-block; margin-bottom: 15px; }
-        .project-card { border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; }
-        .btn { display: inline-block; background: #3498db; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        /* دیزاین کلی صفحه */
+        body { font-family: 'Tahoma', sans-serif; background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%); padding: 20px; margin: 0; min-height: 100vh; }
+        
+        /* استایل اختصاصی برای نام استاد */
+        .header-box { text-align: center; color: #f1c40f; margin-bottom: 40px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; border: 2px solid #f1c40f; }
+        .header-box h2 { margin: 0; font-size: 1.6rem; }
+        .header-box p { font-size: 0.9rem; color: #fff; margin-top: 8px; }
+
+        /* استایل صفحات کارت‌مانند */
+        .page { background: white; border-radius: 25px; padding: 30px; margin: 0 auto 30px auto; 
+                max-width: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); border-right: 12px solid #e67e22; }
+        
+        h1 { color: #2c3e50; text-align: center; font-size: 1.5rem; margin-top: 0; }
+        .icon { font-size: 65px; text-align: center; margin: 20px 0; display: block; }
+        p { color: #34495e; line-height: 1.9; text-align: justify; font-size: 1.05rem; }
+        
+        /* کلمات مهم */
+        .highlight { color: #d35400; font-weight: bold; background: #ffeaa7; padding: 0 5px; border-radius: 4px; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Mohammad Omar</h1>
-    <p>Frontend Developer & Software Engineer</p>
-</header>
+<div class="header-box">
+    <h2>تقدیم به استاد گرامی: ملک فیصل</h2>
+    <p>تحقیق تخصصی پیرامون تکنولوژی زیک‌بی (Zigbee)</p>
+</div>
 
-<div class="container">
-    <section>
-        <h2>درباره من</h2>
-        <p>توسعه‌دهنده وب با اشتیاق به خلق تجربه‌های کاربری مدرن. متخصص در Frontend دارای گواهینامه بین‌المللی از   ACTID.</p>
-    </section>
+<div class="page">
+    <h1>تکنولوژی زیک‌بی</h1>
+    <span class="icon">📡</span>
+    <p>زیک‌بی یک <span class="highlight">استاندارد بی‌سیم کم‌توان</span> است که بر پایه پروتکل IEEE 802.15.4 طراحی شده و برای اتصال دستگاه‌های هوشمند در محیط‌های کوچک بسیار ایمن و بهینه است.</p>
+</div>
 
-    <section>
-        <h2>پروژه‌های فریلنسری</h2>
-        <div class="project-card">
-            <h3>طراحی وب‌سایت شرکتی</h3>
-            <p>پیاده‌سازی رابط کاربری واکنش‌گرا (Responsive) برای مشتری بین‌المللی با استفاده از تکنولوژی‌های روز.</p>
-        </div>
-    </section>
+<div class="page">
+    <h1>شبکه مش (Mesh)</h1>
+    <span class="icon">🕸️</span>
+    <p>ویژگی کلیدی زیک‌بی <span class="highlight">توپولوژی مش</span> است. در این شبکه، هر دستگاه پیام را به دیگری منتقل می‌کند تا پوشش دهی عالی و پایداری شبکه در کل محیط تضمین شود.</p>
+</div>
 
-    <section>
-        <h2>مهارت‌ها</h2>
-        <ul>
-            <li>HTML5 / CSS3 / JavaScript</li>
-            <li>Web Design & Software Development</li>
-            <li>Git & GitHub Version Control</li>
-        </ul>
-    </section>
+<div class="page">
+    <h1>خانه هوشمند</h1>
+    <span class="icon">🏠</span>
+    <p>اصلی‌ترین کاربرد این تکنولوژی در <span class="highlight">مدیریت هوشمند تجهیزات خانگی</span> مانند چراغ‌ها، قفل‌ها و سیستم‌های امنیتی است که همگی از طریق گوشی کنترل می‌شوند.</p>
+</div>
 
-    <a href="   https://omersabori8-ui.github.io/">مشاهده در گیت‌هاب</a>
+<div class="page">
+    <h1>صنعت هوشمند</h1>
+    <span class="icon">🏭</span>
+    <p>در محیط‌های صنعتی، زیک‌بی برای <span class="highlight">مانیتورینگ دقیق و لحظه‌ای ماشین‌آلات</span> به کار می‌رود و به دلیل مصرف انرژی بسیار کم، نیاز به تعویض باتری را به حداقل می‌رساند.</p>
+</div>
+
+<div class="page">
+    <h1>پزشکی نوین</h1>
+    <span class="icon">❤️</span>
+    <p>سنسورهای پوشیدنی مجهز به زیک‌بی، <span class="highlight">علائم حیاتی بیمار</span> را به صورت پیوسته به ایستگاه پرستاری مخابره می‌کنند که نقش حیاتی در حفظ سلامت بیماران دارد.</p>
+</div>
+
+<div class="page">
+    <h1>شهر هوشمند</h1>
+    <span class="icon">🏙️</span>
+    <p>زیک‌بی با <span class="highlight">بهینه‌سازی مصرف انرژی</span> در چراغ‌های معابر شهری و کنتورهای برق هوشمند، به کاهش هزینه‌ها و ساخت محیطی پایدار کمک می‌کند.</p>
+</div>
+
+<div class="page">
+    <h1>اینترنت اشیاء</h1>
+    <span class="icon">🌐</span>
+    <p>آینده زیک‌بی در <span class="highlight">اتصال میلیاردها دستگاه هوشمند</span> است؛ تکنولوژی که به زودی تمام ابزارهای زندگی ما را بدون سیم و با بالاترین سطح امنیت به هم متصل خواهد کرد.</p>
 </div>
 
 </body>
